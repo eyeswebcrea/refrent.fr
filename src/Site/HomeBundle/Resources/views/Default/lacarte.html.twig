@@ -1,0 +1,33 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	{% 
+		stylesheets output='css/lacarte.css' 
+		'@SiteHomeBundle/Resources/public/css/lacarte.css'
+	%}
+		<link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" title="no title" charset="utf-8"/>
+	{% endstylesheets %}
+	
+{% endblock %}
+
+{% block body %}
+	<div class="span-24 last prepend-top append-bottom">
+		<div class="block span-22 last prepend-1 append-1 list coiffure-list" id="coiffure">
+			{% for rubrique in boucleRubriques({ "idRubrique" : 9 }) %}
+				<h2 class="title">{{ rubrique.getTitre() }}</h2>
+			{% endfor %}
+			{% for article in boucleArticles({"idRubrique" : 9}) %}
+				<div class="block span-22 last {{ loop.index % 2 == 0 ? 'paire' : 'impaire' }} item coiffure-item" id="coiffure-item-{{ loop.index }}">
+					<h2 class="block-title">{{ article.getTitre() }}</h2>
+					<div class="block-text-image span-22 last" id="textimage">
+						<div class="block-content span-17">{{ article.getTexte() | raw }}</div>
+						<div class="span-5 last block-srcshot">
+							<img src="{{ image(article.getPathAbsoluteLocalLogo()).forceResize(168, 126) }}" alt="{{ article.getTitre() }}">
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

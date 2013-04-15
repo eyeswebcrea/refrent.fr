@@ -1,0 +1,56 @@
+{% extends "::base.html.twig" %}
+
+
+{% block stylesheets %}
+	    {% 
+        		stylesheets output='css/mercerie.css' 
+        		'@SiteHomeBundle/Resources/public/css/index.css'
+        %}        		
+        	<link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="screen" />
+        {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+
+	<div class="menu span-24">
+		<p>La Description du lieu par : des plans, du texte, des services</p>
+	</div>
+	<div class="menu span-24 last">
+{#		
+	<div class="menu prepend-top span-12">
+			<img  class="cadrageplan" src="{{ asset('/images/parc_plan.png' ) }}">
+		</div>
+#}
+		<div class="span-12 prepend-top images-index block-scrshot">								
+			{{ getSpipJquerySlider(13, { "forceResize" : true, "width" : 456, theme : "Slider", "height" : 391, texte: false }) | raw }}
+		</div>
+		<div class="menu prepend-top span-6">
+			<div class="admin span-6">
+				<p>la description du lieu Minecraft</p>
+			</div>
+			<div class="parctexte span-6">
+			<p>Le parc et les arbres de Rentilly Véritable poumon vert au cœur du territoire de Marne et Gondoire, le domaine de Rentilly accueille, aujourd’hui, le siège administratif de la Communauté d’Agglomération de Marne et Gondoire (CAMG). En 2006, ce parc prend un nouveau tournant avec la création du Parc culturel et l’ouverture, dans les communs réhabilités, de salles d’exposition, d’ateliers d’artistes, d’un espace des arts vivants et d’un centre de ressources documentaires. 
+D’une superficie d’environ 54 hectares, le domaine de Rentilly se compose de trois espaces paysagers distincts : le parc à l’anglaise, la perspective à la française et la forêt. Au fil des siècles et des propriétaires du domaine, les visages du parc n’ont cessé d’évoluer.
+Aujourd’hui, le Parc culturel en partenariat avec l’association Les Environn’hôtes organisent des visites du parc, afin de faire découvrir au public les arbres qui le composent. Un livret sur les arbres du parc, disponible au Centre de ressources documentaires, permet au promeneur de faire connaissance avec les différentes essences d’arbres présentes dans le parc.
+			</div> 
+		</div>
+		<div class="menu prepend-top span-5 last">
+			<div class="admin span-5">
+				<p>infos administratives</p>
+			</div>
+			<div class="art span-5">
+				<p>centre gluant et terrifiant !</p>
+				<p class="artdetail"> la liste des manifestations artistiques prévues pour l'année courante ou les 6 prochains mois</p>
+			</div>
+			<div class="expo span-5">
+				<p>Expositions</p>
+				<p class="expodetail"> l'ensemble des expositions et manifestations dans le parc</p>
+			</div>
+			<div class="conf span-5">
+				<p>Conférence</p>
+				<p class="confdetail"> les sujets des conférences aisi que le nom et les coordonnées des conférenciers</p>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

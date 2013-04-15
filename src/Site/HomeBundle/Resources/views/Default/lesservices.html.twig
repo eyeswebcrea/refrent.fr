@@ -1,0 +1,29 @@
+{% extends "::base.html.twig" %}
+
+
+{% block body %}
+	<div class="span-24 last prepend-top append-bottom">
+		<div class="block span-22 prepend-1 append-1 list coiffure-list" id="coiffure">
+			{% for rubrique in boucleRubriques({ "idRubrique" : 11 }) %}
+				<h2 class="title">{{ rubrique.getTitre() }}</h2>
+			{% endfor %}
+			{% for article in boucleArticles({"idRubrique" : 11}) %}
+				<div class="block {{ loop.index % 2 == 0 ? 'paire' : 'impaire' }} item coiffure-item" id="coiffure-item-{{ loop.index }}">
+					<h2 class="block-title">{{ article.getTitre() }}</h2>
+					<div class="block-content">{{ article.getTexte() | raw }}</div>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="block span-22 prepend-1 append-1 list coiffure-list" id="coiffure">
+			{% for rubrique in boucleRubriques({ "idRubrique" : 12 }) %}
+				<h2 class="title">{{ rubrique.getTitre() }}</h2>
+			{% endfor %}
+			{% for article in boucleArticles({"idRubrique" : 12}) %}
+				<div class="block {{ loop.index % 2 == 0 ? 'paire' : 'impaire' }} item coiffure-item" id="coiffure-item-{{ loop.index }}">
+					<h2 class="block-title">{{ article.getTitre() }}</h2>
+					<div class="block-content">{{ article.getTexte() | raw }}</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
